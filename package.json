@@ -1,0 +1,39 @@
+{
+  "name": "saludassist",
+  "version": "1.0.0",
+  "description": "Sistema Inteligente de Pre-Diagnóstico Médico con IA - Plataforma web accesible de orientación médica preliminar",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server .",
+    "dev": "npx http-server . --cors",
+    "serve": "npx http-server . -p 8000",
+    "build": "echo 'SaludAsist is a static site - no build required'",
+    "test": "echo 'Add tests here'"
+  },
+  "keywords": [
+    "medicina",
+    "pre-diagnóstico",
+    "IA",
+    "salud",
+    "síntomas",
+    "accesibilidad",
+    "privacidad",
+    "localización",
+    "Ecuador"
+  ],
+  "author": "SaludAsist Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/saludassist.git"
+  },
+  "dependencies": {
+    "html2pdf.js": "^0.10.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
