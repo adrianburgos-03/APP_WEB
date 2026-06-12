@@ -57,58 +57,197 @@
 
 <main id="main-content">
 
-  <!-- SECCIÓN DIAGNÓSTICO -->
-  <section id="diagnostico" aria-labelledby="titulo-diagnostico">
-    <div class="container">
-      <h2 id="titulo-diagnostico">Evaluación de Síntomas</h2>
-      <p class="section-lead">Selecciona los síntomas que experimentas actualmente. Puedes elegir múltiples síntomas.</p>
+<section id="diagnostico" aria-labelledby="titulo-diagnostico">
+  <div class="container">
+   <h2 id="titulo-diagnostico">Evaluación de Síntomas</h2>
+    <p class="section-lead">Selecciona los síntomas que experimentas actualmente. Puedes elegir múltiples síntomas.</p>
 
-      <form id="diagnostico-form" class="diagnostic-form" novalidate>
-        <fieldset>
-          <legend class="form-legend">¿Qué síntomas tienes hoy?</legend>
+    <form id="diagnostico-form" class="diagnostic-form" novalidate>
+      <fieldset style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+        <legend class="form-legend">¿Qué síntomas tienes hoy?</legend>
 
-          <!-- Campo de Edad -->
-          <div class="age-field-wrapper">
-            <label for="edad" class="form-label">🎂 Tu edad (recomendado para diagnóstico más preciso)</label>
-            <div class="age-input-group">
-              <input 
-                type="number" 
-                id="edad" 
-                name="edad" 
-                min="0" 
-                max="120" 
-                placeholder="Ej: 35"
-                aria-label="Edad del paciente"
-                class="age-input">
-              <span class="age-hint">Opcional</span>
-            </div>
+        <div class="age-field-wrapper" style="margin-bottom: 20px;">
+          <label for="edad" class="form-label">🎂 Tu edad (recomendado para diagnóstico más preciso)</label>
+          <div class="age-input-group">
+            <input 
+              type="number" 
+              id="edad" 
+              name="edad" 
+              min="0" 
+              max="120" 
+              placeholder="Ej: 35"
+              aria-label="Edad del paciente"
+              class="age-input">
+            <span class="age-hint">Opcional</span>
+          </div>
+        </div>
+
+        <div class="sintomas-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: left; margin-top: 15px; position: relative; z-index: 10;">
+          <!-- 🫁 RESPIRATORIO -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            🫁 Respiratorio
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 4px;position:relative;z-index:10;">
+            <input type="checkbox" id="chk-tos" name="sintomas" value="tos" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-tos" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">😮‍💨 Tos</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-respirar" name="sintomas" value="dificultad-respirar" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-respirar" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">💨 Dificultad para Respirar</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-congestion" name="sintomas" value="congestion-nasal" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-congestion" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🤧 Congestión Nasal</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-garganta" name="sintomas" value="dolor-garganta" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-garganta" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🗣️ Dolor de Garganta</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-silbido" name="sintomas" value="silbido-respirar" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-silbido" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🎵 Silbido al Respirar</label>
           </div>
 
-          <!-- Sección de Carga de Imágenes -->
-          <div class="image-upload-section">
-            <div class="image-upload-box">
-              <div class="upload-icon">🖼️</div>
-              <h3>Adjunta Imágenes (Opcional)</h3>
-              <p>Si tienes fotos de erupciones, lesiones u otros síntomas visibles, puedes cargarlas aquí para ayudar al análisis.</p>
-              
-              <label for="image-upload" class="upload-label">
-                <input 
-                  type="file" 
-                  id="image-upload" 
-                  name="imagenes" 
-                  accept="image/jpeg,image/png,image/webp"
-                  multiple
-                  aria-label="Cargar imágenes de síntomas"
-                  class="upload-input">
-                <span class="upload-text">Selecciona imágenes (JPG, PNG)</span>
-              </label>
-              
-              <div id="image-preview" class="image-preview"></div>
-              <p class="upload-hint">Máximo 5 imágenes de 5MB cada una. Solo se procesan localmente en tu dispositivo.</p>
-            </div>
+          <!-- 🌡️ SISTÉMICOS -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            🌡️ Sistémicos
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-fiebre" name="sintomas" value="fiebre" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-fiebre" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🤒 Fiebre</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-escalofrios" name="sintomas" value="escalofrios" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-escalofrios" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🥶 Escalofríos</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-cansancio" name="sintomas" value="cansancio" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-cansancio" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">😴 Cansancio Extremo</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-dolor-cuerpo" name="sintomas" value="dolor-corporal" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-dolor-cuerpo" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🦴 Dolor Corporal</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-sudoracion" name="sintomas" value="sudoracion-nocturna" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-sudoracion" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">💦 Sudoración Nocturna</label>
           </div>
 
-          <div class="symptoms-grid">
+          <!-- 🧠 NEUROLÓGICO -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            🧠 Neurológico
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-cabeza" name="sintomas" value="dolor-cabeza" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-cabeza" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🧠 Dolor de Cabeza</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-vision" name="sintomas" value="vision-borrosa" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-vision" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">👀 Visión Borrosa</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-mareos" name="sintomas" value="mareos" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-mareos" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">💫 Mareos / Vértigo</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-desmayo" name="sintomas" value="perdida-conocimiento" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-desmayo" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">😵 Pérdida del Conocimiento</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-hormigueo" name="sintomas" value="hormigueo" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-hormigueo" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">⚡ Hormigueo en Extremidades</label>
+          </div>
+
+          <!-- 🫃 DIGESTIVO -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            🫃 Digestivo
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-nauseas" name="sintomas" value="nauseas" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-nauseas" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🤢 Náuseas</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-vomito" name="sintomas" value="vomito" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-vomito" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🤮 Vómito</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-diarrea" name="sintomas" value="diarrea" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-diarrea" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🚽 Diarrea</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-abdomen" name="sintomas" value="dolor-abdominal" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-abdomen" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🫃 Dolor Abdominal</label>
+          </div>
+
+          <!-- ❤️ CARDIOVASCULAR -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            ❤️ Cardiovascular
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-pecho" name="sintomas" value="dolor-pecho" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-pecho" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">💔 Dolor de Pecho</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-palpitaciones" name="sintomas" value="palpitaciones" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-palpitaciones" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">💓 Palpitaciones</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-hinchazon" name="sintomas" value="hinchazon-piernas" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-hinchazon" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🦵 Hinchazón en Piernas</label>
+          </div>
+
+          <!-- 💆 DERMATOLÓGICO -->
+          <div class="sintoma-categoria" style="grid-column: 1 / -1; background: color-mix(in srgb, var(--primary) 8%, var(--bg)); border-radius: 8px; padding: 8px 14px; margin: 12px 0 6px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem;">
+            💆 Dermatológico
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-sarpullido" name="sintomas" value="sarpullido" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-sarpullido" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🔴 Sarpullido o Ronchas</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-picazon" name="sintomas" value="picazon" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-picazon" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🤚 Picazón Generalizada</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+            <input type="checkbox" id="chk-piel-amarilla" name="sintomas" value="piel-amarilla" style="width:20px;height:20px;cursor:pointer;">
+            <label for="chk-piel-amarilla" style="font-size:15px;cursor:pointer;color:var(--text);margin:0;">🟡 Piel Amarillenta</label>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <button type="button" id="btn-evaluar" class="btn-primary" style="margin-top: 20px; width: 100%; padding: 15px; font-weight: bold; cursor: pointer; background-color: var(--primary); color: white; border: none; border-radius: var(--radius);">
+        Comenzar Evaluación
+      </button>
+    </form>
+
+    <div id="resultado-diagnostico" style="margin-top: 30px;"></div>
+
+    <!-- Sección de Carga de Imágenes -->
+    <div class="image-upload-section">
+      <div class="image-upload-box">
+        <div class="upload-icon">🖼️</div>
+        <h3>Adjunta Imágenes (Opcional)</h3>
+        <p>Si tienes fotos de erupciones, lesiones u otros síntomas visibles, puedes cargarlas aquí para ayudar al análisis.</p>
+        
+        <label for="image-upload" class="upload-label">
+          <input 
+            type="file" 
+            id="image-upload" 
+            name="imagenes" 
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            aria-label="Cargar imágenes de síntomas"
+            class="upload-input">
+          <span class="upload-text">Selecciona imágenes (JPG, PNG)</span>
+        </label>
+        
+        <div id="image-preview" class="image-preview"></div>
+        <p class="upload-hint">Máximo 5 imágenes de 5MB cada una. Solo se procesan localmente en tu dispositivo.</p>
+      </div>
+    </div>
+
+    <div class="symptoms-grid">
 
             <!-- Sistema Respiratorio Expandible -->
             <div class="symptom-accordion">
@@ -276,43 +415,42 @@
 
           </div><!-- /symptoms-grid -->
 
-          <!-- Campo adicional -->
-          <div class="extra-symptoms">
-            <label for="sintomas-extra">¿Algún otro síntoma que quieras mencionar? (opcional)</label>
-            <textarea
-              id="sintomas-extra"
-              name="sintomas-extra"
-              placeholder="Describe cualquier otro síntoma que tengas..."
-              aria-label="Síntomas adicionales opcionales"
-              rows="3"></textarea>
-          </div>
-
-        </fieldset>
-
-        <!-- Error -->
-        <div id="error-message" class="alert alert-error" role="alert" aria-live="polite">
-          <strong>Atención:</strong> Selecciona al menos un síntoma para continuar.
-        </div>
-
-        <!-- Acciones -->
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary" id="btn-submit">
-            🔍 Obtener diagnóstico preliminar
-          </button>
-          <button type="reset" class="btn btn-secondary" id="btn-reset">
-            Limpiar selección
-          </button>
-        </div>
-      </form>
-
-      <!-- Spinner -->
-      <div class="spinner-wrapper" id="spinner" aria-live="polite" aria-label="Analizando síntomas">
-        <div class="spinner" role="status"></div>
-        <p class="spinner-text">Analizando tus síntomas con IA...</p>
+      <!-- Campo adicional -->
+      <div class="extra-symptoms">
+        <label for="sintomas-extra">¿Algún otro síntoma que quieras mencionar? (opcional)</label>
+        <textarea
+          id="sintomas-extra"
+          name="sintomas-extra"
+          placeholder="Describe cualquier otro síntoma que tengas..."
+          aria-label="Síntomas adicionales opcionales"
+          rows="3"></textarea>
       </div>
 
+      <!-- Error -->
+      <div id="error-message" class="alert alert-error" role="alert" aria-live="polite">
+        <strong>Atención:</strong> Selecciona al menos un síntoma para continuar.
+      </div>
+
+      <!-- Acciones -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="btn-submit">
+          🔍 Obtener diagnóstico preliminar
+        </button>
+        <button type="reset" class="btn btn-secondary" id="btn-reset">
+          Limpiar selección
+        </button>
+      </div>
+    </fieldset>
+
+    <!-- Spinner -->
+    <div class="spinner-wrapper" id="spinner" aria-live="polite" aria-label="Analizando síntomas">
+      <div class="spinner" role="status"></div>
+      <p class="spinner-text">Analizando tus síntomas con IA...</p>
     </div>
-  </section>
+
+  </form>
+
+  </div>
 
   <!-- SECCIÓN RESULTADOS -->
   <section id="resultados" role="region" aria-labelledby="titulo-resultados">
