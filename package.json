@@ -7,11 +7,17 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "keywords": ["medicina", "pre-diagnóstico", "IA", "salud", "Ecuador"],
+  "keywords": [
+    "medicina",
+    "pre-diagnóstico",
+    "IA",
+    "salud",
+    "Ecuador"
+  ],
   "author": "Adrian Burgos",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
   }
 }
